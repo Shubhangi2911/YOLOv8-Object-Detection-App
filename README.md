@@ -83,7 +83,8 @@ And many more (COCO dataset classes)
 Below is an example of original vs detected image from this app:
 
 🔹 Original vs Detected Output
-<img src="/mnt/data/Screenshot (345).png" alt="Detection Result" width="800">
+![Detection Result](https://raw.githubusercontent.com/YourUsername/YourRepo/main/Screenshot%20(345).png)
+
 ⚙️ Technologies Used
 Backend
 
