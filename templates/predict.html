@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection - YOLOv8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            margin: 30px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .image-display {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .image-box {
+            flex: 1;
+            margin: 15px;
+            min-width: 300px;
+        }
+        .image-box img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #444;
+            margin-top: 40px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 18px;
+            font-size: 15px;
+            background-color: #6c63ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            background-color: #5548d9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image for Object Detection</h1>
+        <p>Use the form below to upload an image and detect objects using YOLOv8.</p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept="image/*" required>
+            <button type="submit">Detect Objects</button>
+        </form>
+
+        {% if uploaded_image and detected_image %}
+            <h2>Detection Results</h2>
+            <div class="image-display">
+                <div class="image-box">
+                    <h3>Original Image</h3>
+                    <img src="{{ url_for('static', filename=uploaded_image) }}" alt="Uploaded Image">
+                </div>
+                <div class="image-box">
+                    <h3>Detected Image</h3>
+                    <img src="{{ url_for('static', filename=detected_image) }}" alt="Detected Image">
+                </div>
+            </div>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>

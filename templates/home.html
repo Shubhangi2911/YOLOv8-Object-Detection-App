@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv8 Object Detection App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        h1 { color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        .link-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+        .link-button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the YOLOv8 Object Detection App</h1>
+        <p>Choose an option to begin object detection:</p>
+
+        <a href="{{ url_for('predict') }}" class="link-button">
+            🖼️ Upload Image for Detection
+        </a>
+        <a href="/video_stream_page" class="link-button">
+            📹 Start Live Camera Feed
+        </a>
+
+        <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
+            *Note: The live camera feed requires access to your device's webcam.
+        </p>
+    </div>
+</body>
+</html>
